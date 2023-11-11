@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+:root {
+  --main-color: #191919;
+  --text-color: #dddddd;
+  --second-color: #e43d40;
+  --temorary-bg: #302d6d5b;
+  --choosed-bgcolor: #e43d40;
+  --choosed-color: #dddddd;
+  --choosed-color: transparent;
+  --temorary-bg: transparent;
+  --df-radius: 10px;
+  --df-border: 5px solid var(--second-color);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--main-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+.optionsContainer {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 100px;
+  height: 70px;
+  border-radius: 30px;
+  /* background: #111111fa; */
+  background: #131313fa;
+  /* padding: 23px 20px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  transition: 0.4s;
+  z-index: 1;
+}
+
+.optionsContainer.openMenu {
+  width: 400px;
+  height: 170px;
+  /* height: 270px; */
+  /* background: blue; */
+}
+
+.menu {
+  transition: 1s;
+  font-size: 1.2rem;
+  display: none;
+  padding: 23px 30px;
+  cursor: pointer;
+}
+
+.options {
+  padding: 23px 20px;
+  width: 400px;
+  /* height: 270px; */
+  color: var(--main-color);
+  box-sizing: border-box;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(4, 1fr);
+  /* grid-template-rows: 1.3fr 1.3fr 2.3fr 2.3fr; */
+  grid-template-rows: 1.3fr 1.3fr;
+  grid-template-areas:
+    "title title title close"
+    "red green blue yellow"
+    "start stop restart .";
+  overflow: hidden;
+  /* display: none; */
+  opacity: 0;
+  transition: 0.2s;
+  transform: scale(0) translateX(200px);
+  /* background: red; */
+}
+
+.open {
+  display: grid;
+  opacity: 1;
+  transform: scale(1) translateX(0px);
+}
+
+.options .closeBTN {
+  font-size: 20px;
+  color: var(--second-color);
+  border: transparent;
+  cursor: pointer;
+  /* background: transparent; */
+  background: var(--temorary-bg);
+  border-radius: var(--df-radius);
+}
+
+.optionsTitle {
+  margin: 0px 0;
+  padding-left: 10px;
+  grid-area: title;
+  color: rgba(221, 221, 221, 0.431);
+}
+
+.options .switchBTN {
+  grid-area: button;
+  /* background: transparent; */
+  text-align: left;
+  padding-left: 20px;
+  border: transparent;
+  color: var(--choosed-bgcolor);
+  font-weight: 400;
+  letter-spacing: 2px;
+  font-size: 20px;
+  cursor: pointer;
+  background: var(--temorary-bg);
+  border-radius: var(--df-radius);
+}
+
+.colorContener {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: var(--temorary-bg);
+  border-radius: var(--df-radius);
+}
+
+.colorContener .color {
+  width: 13px;
+  height: 13px;
+  border-radius: 10px;
+}
+
+.red {
+  grid-area: red;
+}
+
+.blue {
+  grid-area: blue;
+}
+.green {
+  grid-area: green;
+}
+.yellow {
+  grid-area: yellow;
+}
+
+.red .color {
+  background: #e43d40;
+}
+
+.blue .color {
+  background: #3db5e4;
+}
+.green .color {
+  background: #3de49e;
+}
+.yellow .color {
+  background: #e4d33d;
+}
+
+.contol {
+  background: var(--temorary-bg);
+  color: var(--text-color);
+  border-radius: var(--df-radius);
+
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 14px;
+  line-height: 5px;
+  padding: 5px;
+  /* place-content: center; */
+}
+
+.contol i {
+  font-size: 20px;
+}
+
+.BinaryNumbers {
+  /* border: 1px solid var(--second-color); */
+  color: var(--choosed-color);
+  min-width: 500px;
+  padding: 30px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  overflow-y: hidden;
+}
+
+.binRow {
+  width: 700px;
+  height: 63.6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px;
+  /* background: #754848; */
+  transition: 5s;
+  opacity: 0.2;
+  transform: scale(0.5);
+}
+
+.newBinRow {
+  margin: 10px;
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.binDot {
+  background: rgb(51, 48, 48);
+  border-radius: 30px;
+  width: 50px;
+  height: 50px;
+  user-select: none;
+  display: grid;
+  place-content: center;
+  /* color: transparent; */
+  transition: background 0.5s;
+}
+
+.binDot.active {
+  background: var(--choosed-bgcolor);
+  color: var(--choosed-color);
+}
+
+.nrInDec {
+  color: var(--text-color);
+
+  min-width: 50px;
+  height: 50%;
+  display: grid;
+  place-content: center;
+}
+
+.binDot:hover {
+  color: white;
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .optionsContainer {
+    transform: scale(0.8) translateX(15%);
+    /* background: #000; */
+  }
+
+  .BinaryNumbers {
+    margin-right: 50px;
+    transform: scaleX(0.8);
+  }
+  .BinaryNumbers .binRow {
+    width: 400px;
+    height: 10px;
+    margin: 10px;
+  }
+  .binDot {
+    width: 20px;
+    height: 20px;
+  }
+}
